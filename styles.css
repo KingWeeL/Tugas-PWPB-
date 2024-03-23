@@ -1,0 +1,22 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#text {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#text-input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#font-select,#color-select  {
+  margin: 8px;
+  width: 100%;
+}

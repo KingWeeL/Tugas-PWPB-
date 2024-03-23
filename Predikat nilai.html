@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predikat Penilaian</title>
+</head>
+<body>
+    <h2>Predikat Nilai:</h2>
+    <input type="number" id="nilaiInput" placeholder="Masukkan nilai">
+    <button onclick="beriPredikat()">Berikan Predikat</button>
+    <p id="hasilPredikat"></p>
+
+    <script>
+        function beriPredikat() {
+            // Ambil nilai dari input
+            var nilai = document.getElementById("nilaiInput").value;
+
+            // Validasi input
+            if (nilai === "") {
+                alert("Masukkan nilai terlebih dahulu!");
+                return;
+            }
+
+            // Konversi nilai ke angka
+            nilai = parseFloat(nilai);
+
+            // Berikan predikat berdasarkan kriteria
+            var predikat = "";
+            if (nilai >= 90) {
+                predikat = "Baik Sekali";
+            } else if (nilai >= 80) {
+                predikat = "Baik";
+            } else if (nilai >= 70) {
+                predikat = "Cukup";
+            } else {
+                predikat = "Kurang";
+            }
+
+            // Tampilkan hasil predikat
+            document.getElementById("hasilPredikat").innerHTML = "Predikat: " + predikat;
+        }
+    </script>
+</body>
+</html>

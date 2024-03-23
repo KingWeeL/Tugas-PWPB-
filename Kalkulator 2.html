@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Sederhana</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+  }
+  .calculator {
+    width: 250px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 4px solid #aqua;
+    border-radius: 5px;
+  }
+  input[type="button"] {
+    width: 40px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+ 
+  }
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" id="displayA" disabled>
+  <input type="text" id="operatorField" disabled>
+  <input type="text" id="displayB" disabled>
+  <br>
+  <input type="button" value="7" onclick="addToDisplay('7')">
+  <input type="button" value="8" onclick="addToDisplay('8')">
+  <input type="button" value="9" onclick="addToDisplay('9')">
+  <input type="button" value="+" onclick="setOperator('+')">
+  <input type="button" value="4" onclick="addToDisplay('4')">
+  <input type="button" value="5" onclick="addToDisplay('5')">
+  <input type="button" value="6" onclick="addToDisplay('6')">
+  <input type="button" value="-" onclick="setOperator('-')">
+  <input type="button" value="1" onclick="addToDisplay('1')">
+  <input type="button" value="2" onclick="addToDisplay('2')">
+  <input type="button" value="3" onclick="addToDisplay('3')">
+  <input type="button" value="*" onclick="setOperator('*')">
+  <input type="button" value="0" onclick="addToDisplay('0')">
+  <input type="button" value="." onclick="addToDisplay('.')">
+  <input type="button" value="/" onclick="setOperator('/')">
+  <input type="button" value="C" onclick="clearDisplay()">
+  <input type="button" value="=" onclick="calculate()">
+  <input type="button" value="&#9003;" onclick="backspace()">
+</div>
+
+<script>
+var displayA = document.getElementById('displayA');
+var displayB = document.getElementById('displayB');
+var operatorField = document.getElementById('operatorField');
+var currentInput = displayA;
+
+function addToDisplay(value) {
+  currentInput.value += value;
+}
+
+function setOperator(operator) {
+  operatorField.value = operator;
+  currentInput = displayB;
+}
+
+function clearDisplay() {
+  displayA.value = '';
+  displayB.value = '';
+  operatorField.value = '';
+  currentInput = displayA;
+}
+
+function calculate() {
+  var valueA = parseFloat(displayA.value);
+  var valueB = parseFloat(displayB.value);
+  var operator = operatorField.value;
+  var result;
+  
+  switch(operator) {
+    case '+':
+      result = valueA + valueB;
+      break;
+    case '-':
+      result = valueA - valueB;
+      break;
+    case '*':
+      result = valueA * valueB;
+      break;
+    case '/':
+      result = valueA / valueB;
+      break;
+    default:
+      result = 'Error';
+  }
+  
+  displayA.value = result;
+  displayB.value = '';
+  operatorField.value = '';
+  currentInput = displayA;
+}
+
+function backspace() {
+  currentInput.value = currentInput.value.slice(0, -1);
+}
+</script>
+
+</body>
+</html>
